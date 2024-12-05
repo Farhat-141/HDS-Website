@@ -16,19 +16,19 @@ body{
 }
 @font-face {
     font-family: neue;
-    src: url(font/NeueHaasUnica-ExtraLight.ttf);
+    src: url(./font/NeueHaasUnica-ExtraLight.ttf);
 }
 @font-face {
     font-family: neueBold;
-    src: url(font/NeueHaasUnica-Bold.ttf);
+    src: url(./font/NeueHaasUnica-Bold.ttf);
 }
 @font-face {
     font-family: replica;
-    src: url(FontDesktop/Inter-ExtraLight.otf);
+    src: url(./FontDesktop/Inter-ExtraLight.otf);
 }
 @font-face {
     font-family: neuebold;
-    src: url(FontDesktop/Inter-SemiBold.otf);
+    src: url(./FontDesktop/Inter-SemiBold.otf);
 }
 .header {
     position: fixed; /* Keeps the header fixed at the top */
@@ -66,7 +66,7 @@ body{
 }
 @font-face {
     font-family: intern;
-    src: url(FontDesktop/Inter-Light.otf);
+    src: url(./FontDesktop/Inter-Light.otf);
 }
 .mainNav-primary{
     display: flex;
@@ -115,7 +115,7 @@ body{
 }
 @font-face {
     font-family: interm;
-    src: url(FontDesktop/Inter-Medium.otf);
+    src: url(./FontDesktop/Inter-Medium.otf);
 }
 .mainNav-secondary{
     display: flex;
