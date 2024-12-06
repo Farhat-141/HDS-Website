@@ -80,8 +80,12 @@ body{
     align-content: center;
     width: 30px;
 }
+@font-face {
+    font-family: fonttit;
+    src: url(./FontDesktop/Inter-Medium.otf);
+}
 .mainNav-primary-homepage-title{
-    font-family: neue;
+    font-family: fonttit;
     margin: 0;
     padding: 5px;
 }
