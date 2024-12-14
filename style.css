@@ -458,12 +458,10 @@ body{
 }
 
 @media (max-width: 1000px) {
-
     /* Utility Adjustments */
     .mainNav-utility {
         margin: 1vh;
     }
-
     /* Toggle Button */
     .menu-toggle {
         display: block; /* Show toggle button on smaller screens */
@@ -528,6 +526,9 @@ body{
         justify-content: center;
         align-self: center;
         align-content: center;
+    }
+    .features-cell{
+        width: 30%;
     }
 
 }
@@ -611,9 +612,13 @@ body{
         gap: 5vh;
     }
     .features-cell{
+        width: auto;
         flex-direction: row;
         justify-content: space-between;
         margin: 0;
+    }
+    .features-cell-h1{
+        margin: 2vh;
     }
     .features-cell-icon{
         margin: 5vh;
