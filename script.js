@@ -45,4 +45,13 @@ window.addEventListener('scroll', () => {
     lastScrollY = window.scrollY;
 });
 
+// Select the toggle button and menu
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNavMenu = document.querySelector('.mainNav-menu');
+
+// Add event listener to toggle the menu visibility
+menuToggle.addEventListener('click', () => {
+    mainNavMenu.classList.toggle('open'); // Add/remove the "open" class
+});
+
 

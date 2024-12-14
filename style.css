@@ -55,7 +55,7 @@ body{
     height: 60px;
     background-color: var(--primary-background-color);
     color: #030303;
-    z-index: 1000; /* Match header z-index */
+    z-index: 999; /* Match header z-index */
     position: relative;
     width: 100%;
 }
@@ -87,6 +87,8 @@ body{
     font-family: fonttit;
     margin: 0;
     padding: 5px;
+    text-decoration: none;
+    color: black;
 }
 .mainNav-primarylist{
     display: flex;
@@ -99,13 +101,13 @@ body{
     padding: 0 30px;
     align-items: center;
     margin: 0;
+    font-size: 2.5vh;
 }
 .mainNav-linkItem{
     padding: 6px;
     align-content: center;
     height: 100%;
     color: var(--secondary-text-color);
-    font-size: 15px;
     border-bottom: 2px solid transparent;
     text-decoration: none;
     font-weight: bold;
@@ -163,6 +165,7 @@ body{
     padding: 5vh;
 }
 .hero-left-content{
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -188,9 +191,8 @@ body{
 }
 .hero-left-content-p{
     font-size: 2rem;
-    font-family: replica;
     color: var(--extra-text-color);
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 5rem;
 }
 .hero-left-content-button{
@@ -240,7 +242,6 @@ body{
     background-image: linear-gradient(180deg, #000000 30%, #393d3f 100%);
 }
 .preview-content-data{
-    font-family: neueBold;
     grid-column: 1/6;
     padding: 5vh;
 }
@@ -249,13 +250,11 @@ body{
 }
 
 .offers{
-    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
     font-family: sans-serif;
-    margin: 15vh;
+    margin: 50vh 10vh;
 }
 .offers-div{
     flex: 1 1 0;
@@ -278,9 +277,9 @@ body{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: repeat(3,1fr);
-    gap: 25px;
+    gap: 3vh;
     position: relative;
-    padding: 5vw;
+    padding: 3vw;
 }
 .module-grid img{
     position: relative;
@@ -316,7 +315,7 @@ body{
 }
 .module-grid-cell-p{
     color: #b0b0b0; /* Subtle light gray for text */
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.6;
     margin: 0;
     padding: 0 0 20px 0;
@@ -329,6 +328,7 @@ body{
     border-top: 1px solid gray;
     border-left: 1px solid gray;
     border-top-left-radius: 10px;
+    margin: 5vh 0 0 5vh;
 }
 .module-grid-cell:hover{
     transform: translateY(-5px);
@@ -347,9 +347,9 @@ body{
 }
 .features-cells{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 0 10vh;
+    padding: 10vh;
 }
 .features-cell{
     display: flex;
@@ -368,15 +368,14 @@ body{
     transition: 0.5s;
 }
 .features-cell-h1{
-    font-size: 2rem;
-    padding:  10vh 0;
-    margin: 0 5vh;
+    font-size: auto;
+    padding:  10vh 5vh;
     font-family: neueBold;
 }
 .features-cell-icon{
     margin: 70px 0;
-    width: 90px;
-    height: 90px;
+    width: 30%;
+    height: auto;
 }
 .features-cell-arrow path{
     width: 50px;
@@ -397,6 +396,14 @@ body{
 .footer-infolistItem{
     font-size: 24px;
     list-style: none;
+    padding-bottom: 2vh;
+}
+.footerinfolist{
+    margin: 5vh;
+}
+.footer-infolistItem:hover{
+    color: var(--primary-background-color);
+    cursor: pointer;
 }
 .footerlist-h1{
     font-size: 24px;
@@ -423,6 +430,8 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin-top: 5vh;
+    width: 20%;
 }
 .footer-ref-p:hover{
     cursor: pointer;
@@ -431,7 +440,6 @@ body{
 .footer{
     background-image: url('Union.svg');
     background-repeat: no-repeat;
-    background-size: 50%;
     background-size: 50%;
     background-position: right bottom;
 }
@@ -444,11 +452,73 @@ body{
     fill: white;
     
 }
+/* Default State */
+.mainNav-menu, .menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+}
 
-@media (max-width:1024px){
-    .header{
+@media (max-width: 1000px) {
+
+    /* Utility Adjustments */
+    .mainNav-utility {
+        margin: 1vh;
+    }
+
+    /* Toggle Button */
+    .menu-toggle {
+        display: block; /* Show toggle button on smaller screens */
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        z-index: 1000;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        width: auto;
+        height: auto;
+    }
+
+    /* Main Navigation Menu */
+    .mainNav-menu {
+        display: none; /* Hidden by default */
+        flex-direction: column; /* Stack menu items vertically */
+        position: absolute;
+        top: 60px; /* Adjusted based on the header */
+        left: 0;
+        background-color: yellow;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000; /* Ensure it stays on top of other elements */
+    }
+
+    /* Visible Menu State */
+    .mainNav-menu.open {
+        display: flex; /* Show menu when open */
+    }
+
+    .mainNav-listItem, .mainNav-linkItem {
+        font-size: 1rem;
+    }
+
+    /* Hide Primary and Secondary Navigation by Default */
+    .mainNav-primarylist, .mainNav-secondary {
         display: none;
     }
+
+    /* Menu List Styling */
+    .menu-primarylist, .menu-secondarylist {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    /* Center Navigation Wrapper */
+    .mainNav-wrapper {
+        justify-content: center;
+    }
+}
+
+
+@media (max-width:1024px){
     .hero{
         align-content: center;
     }
@@ -461,10 +531,18 @@ body{
     }
 
 }
+@media(max-width:1350px){
+    .mainNav-listItem{
+        padding: 2vh;
+    }
+    .mainNav-linkItem{
+        padding: 0;
+    }
+}
 
 @media (max-width:768px){
     body{
-        padding-top: 10vh;
+        padding-top: vh;
     }
     .hero{
         display: flex;
@@ -482,6 +560,7 @@ body{
     }
     .hero-left-content-h1{
         font-size: 5rem;
+        margin-top: 0;
     }
     .hero-left-content-p{
         font-size: 2rem;
@@ -545,11 +624,15 @@ body{
         padding: 0;
         font-size: 2.2rem;
     }
+    
 }
 
 @media (max-width:425px){
     .hero-left{
         margin: 0;
+    }
+    .hero-right{
+        height: 40vh;
     }
     .hero-left-content-h1{
         font-size: 3rem;
@@ -557,7 +640,7 @@ body{
     }
     .hero-left-content-p{
         font-size: 1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
     .hero-left-content-button{
         font-size: 1rem;
@@ -601,11 +684,8 @@ body{
     }
 }
 @media (max-width:375px){
-    body{
-        padding: 0;
-    }
-    .hero-left{
-        padding:0;
+    .hero-right{
+        height: 30vh;
     }
     .overview, .offers, .preview-content{
         padding: 2vh;
