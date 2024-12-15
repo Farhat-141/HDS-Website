@@ -165,7 +165,8 @@ body{
     padding: 5vh;
 }
 .hero-left-content{
-    width: 80%;
+    width: 75%;
+    padding-left: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -190,9 +191,9 @@ body{
     padding: 5px 2px;
 }
 .hero-left-content-p{
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: var(--extra-text-color);
-    font-weight: normal;
+    font-weight: bold;
     margin-bottom: 5rem;
 }
 .hero-left-content-button{
@@ -223,7 +224,7 @@ body{
 }
 .overview-h1{
     text-align: center;
-    font-size: 50px;
+    font-size: 4rem;
     width: 75%;
 }
 .overview-p{
@@ -254,7 +255,7 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
     font-family: sans-serif;
-    margin: 50vh 10vh;
+    padding: 30vh 0;
 }
 .offers-div{
     flex: 1 1 0;
@@ -275,7 +276,7 @@ body{
 }
 .module-grid{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,1fr);
     gap: 3vh;
     position: relative;
