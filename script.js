@@ -6,12 +6,12 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        
+        // Add "_in-view" class when 25% of the element is visible
         entry.target.classList.add('_in-view');
       }
     });
   },
-  { threshold: 0.1 } 
+  { threshold: 0.10 } // Trigger when 25% of the element is visible
 );
 
 // Observe each item
