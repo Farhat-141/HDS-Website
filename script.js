@@ -1,3 +1,21 @@
+// Select all items in the container
+const items = document.querySelectorAll('.container *');
+
+// Create the Intersection Observer
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Add "_in-view" class when 25% of the element is visible
+        entry.target.classList.add('_in-view');
+      }
+    });
+  },
+  { threshold: 0.10 } // Trigger when 25% of the element is visible
+);
+
+// Observe each item
+items.forEach((item) => observer.observe(item));
 let cells = document.getElementsByClassName('features-cell');
 
 // Convert HTMLCollection to an array and iterate

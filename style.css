@@ -4,7 +4,20 @@
     --extra-text-color:#666666;
     --primary-background-color:#ffff00;
     --secondary-background-color:#003d31;
+}/* Universal selector for all items */
+
+.container *{
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Start slightly below */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  /* Active state when elements are in view */
+  .container *._in-view{
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Back to original position */
 }
+
 body{
     padding-top: 90px; /* Offset for the header's height + margin */
     background-color: var(--secondary-text-color);
@@ -29,16 +42,17 @@ body{
     font-family: neuebold;
     src: url(./FontDesktop/Inter-SemiBold.otf);
 }
+
 .header {
     position: fixed; /* Keeps the header fixed at the top */
-    top: 15px; /* Adjust for the margin */
+    top: 0; /* Adjust for the margin */
     left: 0;
-    width: calc(100% - 30px); /* Adjust width to account for left and right margins */
+    width: 100%; /* Adjust width to account for left and right margins */
     background-color: var(--primary-background-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out; /* Smooth hide/show animation */
     z-index: 1000;
-    margin: 15px; /* Add spacing around the header */
+    margin: 0; /* Add spacing around the header */
 }
 
 .header.hidden {
@@ -101,19 +115,22 @@ body{
     padding: 0 30px;
     align-items: center;
     margin: 0;
-    font-size: 2.5vh;
+    font-size: 1rem;
 }
 .mainNav-linkItem{
     padding: 6px;
     align-content: center;
     height: 100%;
     color: var(--secondary-text-color);
-    border-bottom: 2px solid transparent;
+    border-bottom: 3px solid transparent;
     text-decoration: none;
     font-weight: bold;
+    transition: transform 0.5s ease, border-color 0.3s ease;
 }
 .mainNav-linkItem:hover{
     border-color: var(--secondary-text-color);
+    transform-origin: left;
+    transition: 0.5s;
 }
 .mainNav-primary-homepage{
     display: flex;
@@ -124,9 +141,9 @@ body{
 }
 .mainNav-secondary{
     display: flex;
-    gap: 10px;
+    column-gap: 10px;
     font-family: neuebold;
-    padding: 10px;
+    padding: 0 10px;
     justify-content: space-around;
 }
 .mainNav-secondarylist{
@@ -141,20 +158,26 @@ body{
     padding: 10px 20px;
     align-self: center;
     border-radius: 20px;
+    font-family: neuebold;
     background-color: transparent;
     border: 2px solid var(--secondary-text-color);
     transition: 0.25s;
     margin: 0;
+    cursor: pointer;
 }
 .mainNav-utility-button:hover{
     color: var(--primary-text-color);
     background-color: var(--secondary-text-color);
-    transition: 0.25s;
+    transition: 0.5s;
+}
+.container{
+    overflow: hidden;
 }
 .hero{
     height: 100vh;
     width: 100%;
     display: flex;
+    margin-bottom: 5vh;
 }
 .hero-left{
     width: 50%;
@@ -166,7 +189,6 @@ body{
 }
 .hero-left-content{
     width: 75%;
-    padding-left: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -180,8 +202,8 @@ body{
     font-weight: bold;
     letter-spacing: -0.1cap;
     width: fit-content;
-    padding: 0 0 20px 0;
-    border-bottom:2px solid var(--primary-background-color);
+    padding-bottom:1rem;
+    border-bottom:3px solid var(--primary-background-color);
 }
 .hero-left-content-h1 sup{
     font-size: 12px;
@@ -191,10 +213,9 @@ body{
     padding: 5px 2px;
 }
 .hero-left-content-p{
-    font-size: 1.2rem;
-    color: var(--extra-text-color);
-    font-weight: bold;
-    margin-bottom: 5rem;
+    font-size: 1.5rem;
+    color: var(--primary-text-color);
+    font-family: neue;
 }
 .hero-left-content-button{
     background-color: white;
@@ -217,20 +238,19 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5vh;
-    height: 90vh;
-    letter-spacing: -0.15cap;
+    padding: 12vh 0;
+    letter-spacing: 0.15cap;
     font-family: neue;
 }
 .overview-h1{
     text-align: center;
     font-size: 4rem;
-    width: 75%;
+    margin: 0;
 }
 .overview-p{
     text-align: center;
-    width: 75%;
-    font-size: 40px;
+    width: 50%;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 .preview-content{
@@ -244,28 +264,43 @@ body{
 }
 .preview-content-data{
     grid-column: 1/6;
-    padding: 5vh;
+    padding: ;
 }
 .preview-content-show{
     grid-column: 7/19;
 }
-
+.preview-button{
+    font-size: 1rem;
+    border-radius: 2rem;
+    background-color: white;
+    padding: 10px 50px;
+    margin: 10px 0;
+    border:1px solid white;
+}
+.preview-button:hover{
+    color: var(--primary-text-color);
+    background-color: transparent;
+    transition: 0.5s;
+    cursor: pointer;
+}
 .offers{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     font-family: sans-serif;
-    padding: 30vh 0;
+    padding: 20vh 15vh;
+    gap: 2vh;
 }
 .offers-div{
     flex: 1 1 0;
     padding: 5vh;
+    border: 2px solid var(--primary-background-color);
 }
 .offers-div-h1{
-    font-size: 2rem;
+    font-size: auto;
 }
 .offers-div-p{
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 .module{
     padding: 20px;
@@ -277,10 +312,10 @@ body{
 .module-grid{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3,1fr);
-    gap: 3vh;
+    grid-template-rows: auto;
+    gap: 2vh;
     position: relative;
-    padding: 3vw;
+    padding: 1vw;
 }
 .module-grid img{
     position: relative;
@@ -332,7 +367,7 @@ body{
     margin: 5vh 0 0 5vh;
 }
 .module-grid-cell:hover{
-    transform: translateY(-5px);
+    transform: translateY(-1vh);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
 }
 .features{
@@ -384,7 +419,7 @@ body{
     fill: #000000;
 }
 .footer{
-    height: 100vh;
+    height: auto;
 }
 .footer-wrapper{
     display: flex;
@@ -400,7 +435,8 @@ body{
     padding-bottom: 2vh;
 }
 .footerinfolist{
-    margin: 5vh;
+    padding: 0;
+    margin-top: 5vh;    
 }
 .footer-infolistItem:hover{
     color: var(--primary-background-color);
@@ -428,11 +464,10 @@ body{
 }
 .footer-reflist{
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 5vh;
-    width: 20%;
+    margin: 10vh;
 }
 .footer-ref-p:hover{
     cursor: pointer;
@@ -445,20 +480,18 @@ body{
     background-position: right bottom;
 }
 .footer-icon{
-    width: 50px;
-    height: 50px;
+    width: 15vh;
+    height: 15vh;
 }
 .footer-icon path{
-
     fill: white;
-    
 }
 /* Default State */
 .mainNav-menu, .menu-toggle {
     display: none; /* Hidden by default on larger screens */
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 950px) {
     /* Utility Adjustments */
     .mainNav-utility {
         margin: 1vh;
@@ -476,7 +509,6 @@ body{
         width: auto;
         height: auto;
     }
-
     /* Main Navigation Menu */
     .mainNav-menu {
         display: none; /* Hidden by default */
@@ -488,7 +520,6 @@ body{
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         z-index: 1000; /* Ensure it stays on top of other elements */
     }
-
     /* Visible Menu State */
     .mainNav-menu.open {
         display: flex; /* Show menu when open */
@@ -517,25 +548,49 @@ body{
 }
 
 
-@media (max-width:1024px){
+@media (max-width:1100px){
     .hero{
+        margin-top: 60px;
         align-content: center;
+    }
+    .overview{
+        height: auto;
+    }
+    .mainNav-listItem{
+        padding: 0vh;
+        font-size: 0.75rem;
     }
     .hero-left{
         display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self: center;
-        align-content: center;
+        padding: 0;
+        margin: 0;
     }
     .features-cell{
         width: 30%;
     }
+    .overview{
+        height: auto;
+        width: 100%;
+        letter-spacing: 0;
+    }
+    .overview-h1{
+        width: 100%;
+        font-size: 3em;
+    }
+    .overview-p{
+        font-size: 2rem;
+        width: 100%;
+        padding: 1rem;
+    }
 
 }
 @media(max-width:1350px){
+    .overview{
+        height: auto;
+    }
     .mainNav-listItem{
-        padding: 2vh;
+        padding: 1rem;
+        font-size: 0.75rem;
     }
     .mainNav-linkItem{
         padding: 0;
@@ -543,8 +598,18 @@ body{
 }
 
 @media (max-width:768px){
-    body{
-        padding-top: vh;
+    .header{
+        top: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .mainNav-wrapper{
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
     }
     .hero{
         display: flex;
@@ -557,28 +622,24 @@ body{
         height: 50vh;
     }
     .hero-left{
-        width: 80%;
+        width: 100%;
         margin: 5vh;
+        display: flex;
+        justify-content: left;
     }
     .hero-left-content-h1{
-        font-size: 5rem;
-        margin-top: 0;
+        font-size: 3rem;
+        margin: 0;
     }
     .hero-left-content-p{
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin: 1rem 0;
     }
     .hero-left-content-button{
-        font-size: 1.5rem;
-        padding: 1rem 5rem;
+        font-size: 1rem;
+        padding: 0.5rem 2rem;
         border-radius: 2rem;
     }
-    .overview{
-        height: auto;
-    }
-    .overview-h1, .overview-p{
-        font-size: 5rem;
-    }
-
     .preview-content{
         grid-template-columns: auto;
         height: auto;
@@ -635,40 +696,52 @@ body{
 
 @media (max-width:425px){
     .hero-left{
-        margin: 0;
+        margin: 3rem 1rem;
     }
     .hero-right{
         height: 40vh;
     }
+    .hero-left-content{
+        align-self: center;
+        width: 100%;
+    }
     .hero-left-content-h1{
         font-size: 3rem;
-        margin-bottom: 0;
     }
     .hero-left-content-p{
         font-size: 1rem;
-        margin-bottom: 1rem;
+        width: 100%;
     }
     .hero-left-content-button{
         font-size: 1rem;
-        padding: 1rem 3rem;
+        padding: 0.5rem 2rem;
     }
     .overview-h1{
-        font-size: 3rem;
+        font-size: 1.75rem;
         width: 100%;
     }
     .overview-p{
-        font-size: 3rem;
-        width: 100%;
+        font-size: 1.5rem;
+        font-weight: normal;
+        width: auto;
+        text-align: left;
     }
     .preview-content-data{
         font-size: 1.5rem;
         padding: 5vh 0;
     }
+    .offers{
+        padding: 2rem 0;
+    }
     .offers-div-h1{
         font-size: 2rem;
+        margin: 0.5rem 0;
+    }
+    .offers-div{
+        padding: 2rem;
     }
     .offers-div-p{
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     .module-heading{
         font-size: 2.5rem;
@@ -700,3 +773,4 @@ body{
         padding: 0;
     }
 }
+
