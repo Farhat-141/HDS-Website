@@ -4,7 +4,20 @@
     --extra-text-color:#666666;
     --primary-background-color:#ffff00;
     --secondary-background-color:#003d31;
+}/* Universal selector for all items */
+
+.container *{
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Start slightly below */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  /* Active state when elements are in view */
+  .container *._in-view{
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Back to original position */
 }
+
 body{
     padding-top: 90px; /* Offset for the header's height + margin */
     background-color: var(--secondary-text-color);
@@ -29,18 +42,16 @@ body{
     font-family: neuebold;
     src: url(./FontDesktop/Inter-SemiBold.otf);
 }
-
-
 .header {
     position: fixed; /* Keeps the header fixed at the top */
-    top: 15px; /* Adjust for the margin */
+    top: 0; /* Adjust for the margin */
     left: 0;
-    width: calc(100% - 30px); /* Adjust width to account for left and right margins */
+    width: 100%; /* Adjust width to account for left and right margins */
     background-color: var(--primary-background-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out; /* Smooth hide/show animation */
     z-index: 1000;
-    margin: 15px; /* Add spacing around the header */
+    margin: 0; /* Add spacing around the header */
 }
 
 .header.hidden {
@@ -113,9 +124,12 @@ body{
     border-bottom: 3px solid transparent;
     text-decoration: none;
     font-weight: bold;
+    transition: transform 0.5s ease, border-color 0.3s ease;
 }
 .mainNav-linkItem:hover{
     border-color: var(--secondary-text-color);
+    transform-origin: left;
+    transition: 0.5s;
 }
 .mainNav-primary-homepage{
     display: flex;
@@ -143,15 +157,20 @@ body{
     padding: 10px 20px;
     align-self: center;
     border-radius: 20px;
+    font-family: neuebold;
     background-color: transparent;
     border: 2px solid var(--secondary-text-color);
     transition: 0.25s;
     margin: 0;
+    cursor: pointer;
 }
 .mainNav-utility-button:hover{
     color: var(--primary-text-color);
     background-color: var(--secondary-text-color);
-    transition: 0.25s;
+    transition: 0.5s;
+}
+.container{
+    overflow: hidden;
 }
 .hero{
     height: 100vh;
@@ -218,21 +237,20 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 15vh 0;
-    height: 90vh;
-    letter-spacing: -0.25cap;
+    padding: 12vh 0;
+    letter-spacing: 0.15cap;
     font-family: neue;
 }
 .overview-h1{
     text-align: center;
     font-size: 4rem;
     width: 75%;
-    margin: 0;
+
 }
 .overview-p{
     text-align: center;
-    width: 75%;
-    font-size: 40px;
+    width: 50%;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 .preview-content{
@@ -270,17 +288,19 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
     font-family: sans-serif;
-    padding: 30vh 0;
+    padding: 20vh 15vh;
+    gap: 2vh;
 }
 .offers-div{
     flex: 1 1 0;
     padding: 5vh;
+    border: 2px solid var(--primary-background-color);
 }
 .offers-div-h1{
-    font-size: 2rem;
+    font-size: auto;
 }
 .offers-div-p{
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 .module{
     padding: 20px;
@@ -292,10 +312,10 @@ body{
 .module-grid{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3,1fr);
-    gap: 3vh;
+    grid-template-rows: auto;
+    gap: 2vh;
     position: relative;
-    padding: 3vw;
+    padding: 1vw;
 }
 .module-grid img{
     position: relative;
@@ -347,7 +367,7 @@ body{
     margin: 5vh 0 0 5vh;
 }
 .module-grid-cell:hover{
-    transform: translateY(-5px);
+    transform: translateY(-1vh);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
 }
 .features{
@@ -399,7 +419,7 @@ body{
     fill: #000000;
 }
 .footer{
-    height: 100vh;
+    height: auto;
 }
 .footer-wrapper{
     display: flex;
@@ -415,7 +435,8 @@ body{
     padding-bottom: 2vh;
 }
 .footerinfolist{
-    margin: 5vh;
+    padding: 0;
+    margin-top: 5vh;    
 }
 .footer-infolistItem:hover{
     color: var(--primary-background-color);
@@ -443,11 +464,10 @@ body{
 }
 .footer-reflist{
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 5vh;
-    width: 20%;
+    margin: 10vh;
 }
 .footer-ref-p:hover{
     cursor: pointer;
@@ -460,20 +480,18 @@ body{
     background-position: right bottom;
 }
 .footer-icon{
-    width: 50px;
-    height: 50px;
+    width: 15vh;
+    height: 15vh;
 }
 .footer-icon path{
-
     fill: white;
-    
 }
 /* Default State */
 .mainNav-menu, .menu-toggle {
     display: none; /* Hidden by default on larger screens */
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 950px) {
     /* Utility Adjustments */
     .mainNav-utility {
         margin: 1vh;
@@ -530,7 +548,7 @@ body{
 }
 
 
-@media (max-width:1024px){
+@media (max-width:1100px){
     .hero{
         margin-top: 60px;
         align-content: center;
@@ -540,6 +558,7 @@ body{
         margin: 0;
         width: 100%;
     }
+
     .overview{
         height: auto;
     }
@@ -576,7 +595,8 @@ body{
         height: auto;
     }
     .mainNav-listItem{
-        padding: 2vh;
+        padding: 1rem;
+        font-size: 0.75rem;
     }
     .mainNav-linkItem{
         padding: 0;
@@ -584,8 +604,18 @@ body{
 }
 
 @media (max-width:768px){
-    body{
-        padding-top: vh;
+    .header{
+        top: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .mainNav-wrapper{
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
     }
     .hero{
         display: flex;
