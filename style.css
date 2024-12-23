@@ -42,7 +42,6 @@ body{
     font-family: neuebold;
     src: url(./FontDesktop/Inter-SemiBold.otf);
 }
-
 .header {
     position: fixed; /* Keeps the header fixed at the top */
     top: 0; /* Adjust for the margin */
@@ -245,7 +244,8 @@ body{
 .overview-h1{
     text-align: center;
     font-size: 4rem;
-    margin: 0;
+    width: 75%;
+
 }
 .overview-p{
     text-align: center;
@@ -553,6 +553,12 @@ body{
         margin-top: 60px;
         align-content: center;
     }
+    .header{
+        top: 0;
+        margin: 0;
+        width: 100%;
+    }
+
     .overview{
         height: auto;
     }
