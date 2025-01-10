@@ -6,8 +6,91 @@
     --secondary-background-color:#003d31;
 }/* Universal selector for all items */
 
+/* Side Menu Styling */
+.side-menu {
+    position: fixed;
+    top: 30%;
+    right: -100px; /* Initially hidden off-screen with smaller width */
+    transform: translateY(-50%); /* Vertically center the menu */
+    border: 2px solid white;
+    border-right: none;
+    width: 90px; /* Smaller width when closed */
+    height: 10px; /* Adjust the height as needed */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-text-color);
+    transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for both left and width */
+    z-index: 1000; /* Ensure the menu is on top of other elements */
+    padding: 15px; /* Adjust padding for small size */
+    border-radius: 10px 0 0 10px;
+}
 
-@media  (min-width:1200px) {
+/* Hover Effect - Side Menu appears when hovering */
+.side-menu:focus-within, .side-menu:hover {
+    padding: 10px ;
+    height: auto;
+    right: 0; /* Show the side menu */
+    width: 80px; /* Full width when open */
+}
+
+/* Menu Text and Links Styling */
+.side-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.side-menu ul li {
+    margin: 5px 0;
+    width: fit-content;
+    padding-left: 5px;
+}
+
+.side-menu ul li a:hover{
+    border-bottom: 2px solid;
+
+}
+
+.side-menu ul li a {
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    color: var(--secondary-text-color); /* Using secondary text color */
+    font-size: 16px;
+    display: block;
+    transition: color 0.3s ease;
+ /* Add some padding for links when menu is open */
+}
+
+.side-menu ul li a:hover {
+    color: var(--primary-background-color); /* On hover, change to primary text color */
+
+}
+
+/* Optional: Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Main Content: No layout shifting */
+main {
+    transition: margin-left 0.3s ease;
+}
+
+/* Prevent the content from shifting when menu is hidden */
+body:not(:hover) main {
+    margin-left: 0; /* Keep content in place */
+}
+
+/* For open state, add a hover effect on menu items */
+.side-menu:hover ul li a {
+    color: var(--primary-text-color); /* Change text color on hover */
+}
+
+body {
+    background-color: var(--secondary-background-color); /* Set body background */
+    color: var(--secondary-text-color); /* Set general text color */
+}
+
+@media  (min-width:800px) {
     .container *{
         overflow: visible;
         opacity: 0; /* Initially hidden */
@@ -29,6 +112,7 @@ body{
     font-family: neue;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 @font-face {
     font-family: neue;
