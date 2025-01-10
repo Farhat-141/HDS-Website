@@ -6,16 +6,20 @@
     --secondary-background-color:#003d31;
 }/* Universal selector for all items */
 
-.container *{
-    opacity: 0; /* Initially hidden */
-    transform: translateY(20px); /* Start slightly below */
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
 
-  /* Active state when elements are in view */
-  .container *._in-view{
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Back to original position */
+@media  (min-width:1200px) {
+    .container *{
+        overflow: visible;
+        opacity: 0; /* Initially hidden */
+        transform: translateY(10px); /* Start slightly below */
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+    
+      /* Active state when elements are in view */
+      .container *._in-view{
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Back to original position */
+    }
 }
 
 body{
@@ -226,7 +230,7 @@ body{
 }
 .hero-right{
     order: 3;
-    background-image: url('Image.png');
+    background-image: url('https://i.postimg.cc/VLfWJgC3/Image.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -238,14 +242,16 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 12vh 0;
+    padding: 30vh 0 30vh 0;
     letter-spacing: 0.15cap;
     font-family: neue;
 }
 .overview-h1{
     text-align: center;
-    font-size: 4rem;
+    font-size: 3rem;
     margin: 0;
+    font-family: neueBold;
+    color: var(--primary-background-color);
 }
 .overview-p{
     text-align: center;
@@ -254,17 +260,17 @@ body{
     font-weight: bold;
 }
 .preview-content{
-    height: 100vh;
+    height: auto;
     display: grid;
     grid-template-columns: repeat(18,1fr);
     grid-template-rows: auto;
     align-items: center;
-    padding: 5vw;
+    padding: 10vh;
+    padding-bottom: 25vh;
     background-image: linear-gradient(180deg, #000000 30%, #393d3f 100%);
 }
 .preview-content-data{
     grid-column: 1/6;
-    padding: ;
 }
 .preview-content-show{
     grid-column: 7/19;
@@ -288,7 +294,7 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
     font-family: sans-serif;
-    padding: 20vh 15vh;
+    padding: 30vh 15vh;
     gap: 2vh;
 }
 .offers-div{
@@ -303,7 +309,7 @@ body{
     font-size: 0.8rem;
 }
 .module{
-    padding: 20px;
+    padding: 20px 50px;
 }
 .module-heading{
     text-align: center;
