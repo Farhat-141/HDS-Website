@@ -48,7 +48,6 @@ cells.forEach((cell) => {
   });
 });
 
-// Hide/show header on scroll
 const header = document.querySelector('.header');
 let lastScrollY = window.scrollY;
 

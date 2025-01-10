@@ -4,9 +4,8 @@
     --extra-text-color:#666666;
     --primary-background-color:#ffff00;
     --secondary-background-color:#003d31;
-}/* Universal selector for all items */
+}
 
-/* Side Menu Styling */
 .side-menu {
     position: fixed;
     top: 30%;
