@@ -11,7 +11,7 @@
     top: 30%;
     right: -100px; /* Initially hidden off-screen with smaller width */
     transform: translateY(-50%); /* Vertically center the menu */
-    border: 2px solid white;
+    border: 2px solid var(--primary-background-color);
     border-right: none;
     width: 90px; /* Smaller width when closed */
     height: 10px; /* Adjust the height as needed */
