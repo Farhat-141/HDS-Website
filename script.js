@@ -1,75 +1,89 @@
-// Select all items in the container
+// Intersection Observer for all items in the container
 const items = document.querySelectorAll('.container *');
-
-// Create the Intersection Observer
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Add "_in-view" class when 25% of the element is visible
+        // Add "_in-view" class when 10% of the element is visible
         entry.target.classList.add('_in-view');
       }
     });
   },
-  { threshold: 0.10 } // Trigger when 25% of the element is visible
+  { threshold: 0.10 } // Trigger when 10% of the element is visible
 );
 
 // Observe each item
 items.forEach((item) => observer.observe(item));
-let cells = document.getElementsByClassName('features-cell');
 
-// Convert HTMLCollection to an array and iterate
-Array.from(cells).forEach(element => {
-    element.addEventListener('mouseover', function () {
-        let cellDivs = element.getElementsByClassName('features-cell-icon'); // Get icons inside the hovered cell
-        let cellDivs2 = element.getElementsByClassName('features-cell-arrow'); // Get arrows inside the hovered cell
+// Hover effects for features cells
+const cells = document.querySelectorAll('.features-cell');
 
-        // Loop through all icons and apply styles
-        Array.from(cellDivs).forEach(icon => {
-            icon.style.fill = 'var(--primary-background-color)'; // Apply fill color
-            icon.style.transition = '0.2s'; // Smooth transition
-            icon2.style.fill = 'var(--primary-background-color)'; // Apply fill color
-            icon2.style.transition = '0.2s'; // Smooth transition
-        });
+cells.forEach((cell) => {
+  cell.addEventListener('mouseover', () => {
+    const icons = cell.querySelectorAll('.features-cell-icon');
+    const arrows = cell.querySelectorAll('.features-cell-arrow');
+
+    icons.forEach((icon) => {
+      icon.style.fill = 'var(--primary-background-color)'; // Set hover color
+      icon.style.transition = '0.2s'; // Smooth transition
     });
 
-    element.addEventListener('mouseout', function () {
-        let cellDivs = element.getElementsByClassName('features-cell-icon'); // Get icons inside the cell
-        let cellDivs2 = element.getElementsByClassName('features-cell-arrow'); // Get arrows inside the cell
-
-        // Reset the styles for all icons
-        Array.from(cellDivs).forEach(icon => {
-            icon.style.fill = ''; // Reset to the original fill color
-        });
-
-        // Reset the styles for all arrows
-        Array.from(cellDivs2).forEach(icon2 => {
-            icon2.style.fill = ''; // Reset to the original fill color
-        });
+    arrows.forEach((arrow) => {
+      arrow.style.fill = 'var(--primary-background-color)'; // Set hover color
+      arrow.style.transition = '0.2s'; // Smooth transition
     });
+  });
+
+  cell.addEventListener('mouseout', () => {
+    const icons = cell.querySelectorAll('.features-cell-icon');
+    const arrows = cell.querySelectorAll('.features-cell-arrow');
+
+    icons.forEach((icon) => {
+      icon.style.fill = ''; // Reset to default
+    });
+
+    arrows.forEach((arrow) => {
+      arrow.style.fill = ''; // Reset to default
+    });
+  });
 });
 
 const header = document.querySelector('.header');
 let lastScrollY = window.scrollY;
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY) {
-        // Scrolling down, hide the header
-        header.classList.add('hidden');
-    } else {
-        // Scrolling up, show the header
-        header.classList.remove('hidden');
-    }
-    lastScrollY = window.scrollY;
+  if (window.scrollY > lastScrollY) {
+    header.classList.add('hidden'); // Hide header when scrolling down
+  } else {
+    header.classList.remove('hidden'); // Show header when scrolling up
+  }
+  lastScrollY = window.scrollY;
 });
 
-// Select the toggle button and menu
+// Toggle main navigation menu
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNavMenu = document.querySelector('.mainNav-menu');
 
-// Add event listener to toggle the menu visibility
 menuToggle.addEventListener('click', () => {
-    mainNavMenu.classList.toggle('open'); // Add/remove the "open" class
+  mainNavMenu.classList.toggle('open'); // Toggle "open" class for the menu
 });
 
+document.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const menuLinks = document.querySelectorAll('.side-menu ul li a');
 
+    let currentSection = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 60) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+
+    menuLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(currentSection)) {
+            link.classList.add('active');
+        }
+    });
+});

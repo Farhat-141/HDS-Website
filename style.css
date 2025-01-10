@@ -4,19 +4,104 @@
     --extra-text-color:#666666;
     --primary-background-color:#ffff00;
     --secondary-background-color:#003d31;
-}/* Universal selector for all items */
+}
 
-.container *{
-    overflow: visible;
-    opacity: 0; /* Initially hidden */
-    transform: translateY(20px); /* Start slightly below */
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
+.side-menu {
+    position: fixed;
+    top: 30%;
+    right: -100px; /* Initially hidden off-screen with smaller width */
+    transform: translateY(-50%); /* Vertically center the menu */
+    border: 2px solid white;
+    border-right: none;
+    width: 90px; /* Smaller width when closed */
+    height: 10px; /* Adjust the height as needed */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-text-color);
+    transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for both left and width */
+    z-index: 1000; /* Ensure the menu is on top of other elements */
+    padding: 15px; /* Adjust padding for small size */
+    border-radius: 10px 0 0 10px;
+}
 
-  /* Active state when elements are in view */
-  .container *._in-view{
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Back to original position */
+/* Hover Effect - Side Menu appears when hovering */
+.side-menu:focus-within, .side-menu:hover {
+    padding: 10px ;
+    height: auto;
+    right: 0; /* Show the side menu */
+    width: 80px; /* Full width when open */
+}
+
+/* Menu Text and Links Styling */
+.side-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.side-menu ul li {
+    margin: 5px 0;
+    width: fit-content;
+    padding-left: 5px;
+}
+
+.side-menu ul li a:hover{
+    border-bottom: 2px solid;
+
+}
+
+.side-menu ul li a {
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    color: var(--secondary-text-color); /* Using secondary text color */
+    font-size: 16px;
+    display: block;
+    transition: color 0.3s ease;
+ /* Add some padding for links when menu is open */
+}
+
+.side-menu ul li a:hover {
+    color: var(--primary-background-color); /* On hover, change to primary text color */
+
+}
+
+/* Optional: Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Main Content: No layout shifting */
+main {
+    transition: margin-left 0.3s ease;
+}
+
+/* Prevent the content from shifting when menu is hidden */
+body:not(:hover) main {
+    margin-left: 0; /* Keep content in place */
+}
+
+/* For open state, add a hover effect on menu items */
+.side-menu:hover ul li a {
+    color: var(--primary-text-color); /* Change text color on hover */
+}
+
+body {
+    background-color: var(--secondary-background-color); /* Set body background */
+    color: var(--secondary-text-color); /* Set general text color */
+}
+
+@media  (min-width:800px) {
+    .container *{
+        overflow: visible;
+        opacity: 0; /* Initially hidden */
+        transform: translateY(10px); /* Start slightly below */
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+    
+      /* Active state when elements are in view */
+      .container *._in-view{
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Back to original position */
+    }
 }
 
 body{
@@ -26,6 +111,7 @@ body{
     font-family: neue;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 @font-face {
     font-family: neue;
@@ -239,14 +325,16 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 12vh 0;
+    padding: 30vh 0 30vh 0;
     letter-spacing: 0.15cap;
     font-family: neue;
 }
 .overview-h1{
     text-align: center;
-    font-size: 4rem;
+    font-size: 3rem;
     margin: 0;
+    font-family: neueBold;
+    color: var(--primary-background-color);
 }
 .overview-p{
     text-align: center;
@@ -255,12 +343,13 @@ body{
     font-weight: bold;
 }
 .preview-content{
-    height: 100vh;
+    height: auto;
     display: grid;
     grid-template-columns: repeat(18,1fr);
     grid-template-rows: auto;
     align-items: center;
-    padding: 5vw;
+    padding: 10vh;
+    padding-bottom: 25vh;
     background-image: linear-gradient(180deg, #000000 30%, #393d3f 100%);
 }
 .preview-content-data{
@@ -288,7 +377,7 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
     font-family: sans-serif;
-    padding: 20vh 15vh;
+    padding: 30vh 15vh;
     gap: 2vh;
 }
 .offers-div{
@@ -303,7 +392,7 @@ body{
     font-size: 0.8rem;
 }
 .module{
-    padding: 20px;
+    padding: 20px 50px;
 }
 .module-heading{
     text-align: center;
