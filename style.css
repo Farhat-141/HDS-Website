@@ -5,11 +5,10 @@
     --primary-background-color:#ffff00;
     --secondary-background-color:#003d31;
 }
-
 .side-menu {
     position: fixed;
     top: 30%;
-    right: -100px; /* Initially hidden off-screen with smaller width */
+    right: -100px;
     transform: translateY(-50%); /* Vertically center the menu */
     border: 2px solid var(--primary-background-color);
     border-right: none;
@@ -313,7 +312,6 @@ body{
 }
 .hero-right{
     order: 3;
-    background-image: url('https://i.postimg.cc/VLfWJgC3/Image.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
