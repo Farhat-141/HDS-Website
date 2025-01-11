@@ -89,7 +89,7 @@ body {
     color: var(--secondary-text-color); /* Set general text color */
 }
 
-@media  (min-width:800px) {
+@media  (min-width:1000px) {
     .container *{
         overflow: visible;
         opacity: 0; /* Initially hidden */
