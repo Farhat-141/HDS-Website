@@ -20,10 +20,12 @@
     z-index: 1000; /* Ensure the menu is on top of other elements */
     padding: 15px; /* Adjust padding for small size */
     border-radius: 10px 0 0 10px;
+    transition: 0.5s;
 }
 
 /* Hover Effect - Side Menu appears when hovering */
 .side-menu:focus-within, .side-menu:hover {
+    transition: 0.2s;
     padding: 10px ;
     height: auto;
     right: 0; /* Show the side menu */
@@ -312,6 +314,7 @@ body{
 }
 .hero-right{
     order: 3;
+    background-image: url('https://media4.giphy.com/media/vP5gXvSXJ2olG/giphy.gif');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -554,7 +557,9 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     margin: 10vh;
+    gap: 10px;
 }
 .footer-ref-p:hover{
     cursor: pointer;
@@ -569,6 +574,7 @@ body{
 .footer-icon{
     width: 15vh;
     height: 15vh;
+    order: 1;
 }
 .footer-icon path{
     fill: white;
@@ -714,7 +720,7 @@ body{
         display: flex;
         justify-content: left;
     }
-    .hero-left-content-h1{
+    .hero-left-content-h1,.preview-content-data-h1{
         font-size: 3rem;
         margin: 0;
     }
@@ -722,7 +728,7 @@ body{
         font-size: 1.5rem;
         margin: 1rem 0;
     }
-    .hero-left-content-button{
+    .hero-left-content-button, .preview-button{
         font-size: 1rem;
         padding: 0.5rem 2rem;
         border-radius: 2rem;
@@ -745,6 +751,7 @@ body{
         font-size: 5rem;
         flex-direction: column;
         margin: 20vh 0;
+        padding: 2rem 0;
     }
     .offers-div-h1{
         font-size: 3.5rem;
@@ -782,6 +789,9 @@ body{
 }
 
 @media (max-width:425px){
+    .preview-content{
+        padding: 2vh;
+    }
     .hero-left{
         margin: 3rem 1rem;
     }
@@ -792,14 +802,22 @@ body{
         align-self: center;
         width: 100%;
     }
-    .hero-left-content-h1{
+    .hero-left-content-h1,.preview-content-data-h1{
         font-size: 3rem;
+    }
+    .preview-content-data-p{
+        font-size: 1.2rem;
+    }
+    .preview-content-data-h1{
+        font-size: 1.75rem;
+        padding: 0;
+        margin: 0;
     }
     .hero-left-content-p{
         font-size: 1rem;
         width: 100%;
     }
-    .hero-left-content-button{
+    .hero-left-content-button, .preview-button{
         font-size: 1rem;
         padding: 0.5rem 2rem;
     }
@@ -811,7 +829,7 @@ body{
         font-size: 1.5rem;
         font-weight: normal;
         width: auto;
-        text-align: left;
+        text-align: center;
     }
     .preview-content-data{
         font-size: 1.5rem;
@@ -848,6 +866,9 @@ body{
         width: 10vh;
         margin: 0;
     }
+    .module{
+        padding: 10px 20px;
+    }
 }
 @media (max-width:375px){
     .hero-right{
@@ -858,6 +879,14 @@ body{
     }
     .module{
         padding: 0;
+    }
+    .preview-content-data-h1{
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 0;
+    }
+    .preview-content-data-p{
+        font-size: 1rem;
     }
 }
 
