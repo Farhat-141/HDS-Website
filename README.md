@@ -20,12 +20,6 @@ This project involved designing and developing a custom front-end website to rep
 - CSS3  
 - JavaScript (Vanilla)  
 
-## Screenshots
-
-
-![Homepage Screenshot](./assets/screenshots/home.png)
-![Responsive Preview](./assets/screenshots/responsive.png)
-
 ## Getting Started
 
 To run this project locally:
